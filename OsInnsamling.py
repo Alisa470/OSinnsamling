@@ -6,8 +6,8 @@ import socket
 import subprocess
 
 
-# funskjon som henter OS og versjon
-def func_GetOSandVersion():
+# funskjon som henter info om OS og versjon
+def func_GetOSandVers():
     try:
         return (
             f"Operativsystem og versjon: {platform.system()} "
@@ -33,7 +33,7 @@ def func_GetFreeDiskSpace():
 
 
 # funskjon som henter info om bruker som er logget inn
-def func_GetBruker():
+def func_GetUser():
     try:
         return f"Bruker: {getpass.getuser()}"
     except Exception as fail:
@@ -86,3 +86,10 @@ def func_SaveToFile(var_FileName, var_Data):
         print("Full informasjon om feilen:")
         print(fail)
 
+
+if __name__ == "__main__":
+    var_OSandVers = func_GetOSandVers()
+    var_DiskFreeSpace = func_GetFreeDiskSpace()
+    var_User = func_GetUser()
+    var_IPaddress = func_GetIPaddress()
+    var_InnstaledSW = func_GetInstalledSW
