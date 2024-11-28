@@ -1,3 +1,4 @@
+# program som henter hardware og software informasjon fra en maskin
 import platform
 import psutil
 import getpass
@@ -5,6 +6,7 @@ import socket
 import subprocess
 
 
+# funskjon som henter OS og versjon
 def func_GetOSandVersion():
     try:
         return (
@@ -14,9 +16,10 @@ def func_GetOSandVersion():
     except Exception as fail:
         print("Noe gikk galt...")
         print("Full informasjon om feilen:")
-        print(fail)  # Full feilmelding
+        print(fail)
 
 
+# funskjon som henter info om ledig plass på disk
 def func_GetFreeDiskSpace():
     try:
         var_infoDisk = psutil.disk_usage("/")
@@ -29,6 +32,7 @@ def func_GetFreeDiskSpace():
         print(fail)
 
 
+# funskjon som henter info om bruker som er logget inn
 def func_GetBruker():
     try:
         return f"Bruker: {getpass.getuser()}"
@@ -38,6 +42,7 @@ def func_GetBruker():
         print(fail)
 
 
+# funskjon som henter info om IP-adresse
 def func_GetIPaddress():
     try:
         return f"IP-adresse: {socket.gethostbyname(socket.gethostname())}"
@@ -47,6 +52,7 @@ def func_GetIPaddress():
         print(fail)
 
 
+# funskjon som henter info om innstallert programvare
 def func_GetInstalledSW():
     try:
         if platform.system() == "Windows":
@@ -68,3 +74,15 @@ def func_GetInstalledSW():
         print("Noe gikk galt...")
         print("Full informasjon om feilen:")
         print(fail)
+
+
+# funskjon som lagrer denne informasjonen i en fil på PC
+def func_SaveToFile(var_FileName, var_Data):
+    try:
+        with open(var_FileName, "w"):
+            var_FileName.write(var_Data)
+    except Exception as fail:
+        print("Noe gikk galt...")
+        print("Full informasjon om feilen:")
+        print(fail)
+
