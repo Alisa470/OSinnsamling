@@ -61,17 +61,17 @@ def func_GetInstalledSW():
         if platform.system() == "Windows":
             var_cmd = ("powershell \"Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Select-Object DisplayName\"")
             return (f"Installert programvare: "
-                    f"{subprocess.check_output(var_cmd, text=True)}"
+                    f"{subprocess.check_output(var_cmd, shell=True, text=True)}"
                     )
         elif platform.system() == "Linux":
-            var_cmd = "dpkg --get-selections"
+            var_cmd = "sudo /usr/bin/dpkg --get-selections"
             return (f"Installert programvare: "
-                    f"{subprocess.check_output(var_cmd, text=True)}"
+                    f"{subprocess.check_output(var_cmd, shell=True, text=True)}"
                     )
         elif platform.system() == "Darwin":
             var_cmd = "ls /Applications"
             return (f"Installert programvare: "
-                    f"{subprocess.check_output(var_cmd, text=True)}"
+                    f"{subprocess.check_output(var_cmd, shell=True, text=True)}"
                     )
         else:
             return "Din OS støttes ikke"
