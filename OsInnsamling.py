@@ -1,3 +1,6 @@
+#! /usr/bin/python
+# -*- coding: UTF-8 -*-
+
 # program som henter hardware og software informasjon fra en maskin
 import platform
 import psutil
