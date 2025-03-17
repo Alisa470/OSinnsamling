@@ -95,7 +95,7 @@ def func_SaveToFile(var_FileName, var_Data):
         # åpner filen i skrive-modus og skriver data til filen
         with open(var_FileName, "w") as obj_FileName:
             obj_FileName.write(var_Data)
-        return f"Data lagret i filen {var_FileName}"
+        return f"Ferdig, data lagret i filen {var_FileName}"
     except Exception as fail:
         print("Noe gikk galt ved lagring av filen...")
         print("Full informasjon om feilen:")
@@ -139,7 +139,5 @@ def func_Main():
 
 
 if __name__ == "__main__":
-    # kaller hovedfunksjonen og skriver ut resultatet
-    result = func_Main()
-    print(f'Ferdig, data lagret i filen "{var_PCname}_info.txt"')
-    print(result)
+    # kaller hovedfunksjonen
+    print(func_Main())
